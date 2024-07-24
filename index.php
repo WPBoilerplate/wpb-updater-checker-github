@@ -114,4 +114,6 @@ if ( ! class_exists( 'WPBoilerplate_Updater_Checker_Github' ) ) {
 			}
 		}
 	}
+
+	new WPBoilerplate_Updater_Checker_Github();
 }
