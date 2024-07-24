@@ -1,0 +1,27 @@
+{
+    "name": "wpboilerplate/wpb-updater-checker-github",
+    "type": "library",
+    "license": "GPL-2.0-or-later",
+    "description": "Composer to autoload the Updater via Github",
+    "homepage": "https://github.com/WPBoilerplate/wpb-updater-checker-github",
+    "keywords": [
+        "wordpress",
+        "plugin"
+    ],
+    "autoload": {
+        "files": ["index.php"]
+    },
+    "require": {
+        "yahnis-elsts/plugin-update-checker": "dev-master"
+    },
+    "support": {
+        "issues": "https://github.com/WPBoilerplate/wpb-updater-checker-github/issues"
+    },
+    "authors": [
+        {
+            "name": "WPBoilerplate"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
