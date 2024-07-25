@@ -7,11 +7,11 @@ use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
 /**
  * Fired during plugin license activations
  *
- * @link       https://WPBoilerplate.com
+ * @link       https://github.com/WPBoilerplate/
  * @since      0.0.1
  *
- * @package    Post_Anonymously
- * @subpackage Post_Anonymously/includes
+ * @package    WPBoilerplate_Updater_Checker_Github
+ * @subpackage WPBoilerplate_Updater_Checker_Github/includes
  */
 
 if ( ! class_exists( 'WPBoilerplate_Updater_Checker_Github' ) ) {
@@ -24,14 +24,13 @@ if ( ! class_exists( 'WPBoilerplate_Updater_Checker_Github' ) ) {
 	 * @since      0.0.1
 	 * @package    WPBoilerplate_Main_Menu_Licenses
 	 * @subpackage WPBoilerplate_Main_Menu_Licenses/includes
-	 * @author     WPBoilerplate <contact@WPBoilerplate.com>
 	 */
 	class WPBoilerplate_Updater_Checker_Github {
 
 		/**
 		 * The single instance of the class.
 		 *
-		 * @var Post_Anonymously_Loader
+		 * @var WPBoilerplate_Updater_Checker_Github_Loader
 		 * @since 0.0.1
 		 */
 		protected static $_instance = null;
@@ -44,14 +43,14 @@ if ( ! class_exists( 'WPBoilerplate_Updater_Checker_Github' ) ) {
 		public $packages = array();
 
 		/**
-		 * Main Pin_Comment Instance.
+		 * Main WPBoilerplate_Updater_Checker_Github Instance.
 		 *
 		 * Ensures only one instance of WooCommerce is loaded or can be loaded.
 		 *
 		 * @since 1.0.0
 		 * @static
-		 * @see Pin_Comment()
-		 * @return Pin_Comment - Main instance.
+		 * @see WPBoilerplate_Updater_Checker_Github()
+		 * @return WPBoilerplate_Updater_Checker_Github - Main instance.
 		 */
 		public static function instance() {
 			if ( is_null( self::$_instance ) ) {
@@ -92,19 +91,14 @@ if ( ! class_exists( 'WPBoilerplate_Updater_Checker_Github' ) ) {
 
 				foreach ( $this->get_packages() as $package ) {
 
-					$github_repo = $package['repo'];
-					$file_path = $package['file_path'];
-					$name_slug = $package['name_slug'];
-					$release_branch = $package['release_branch'];
-
 					$UpdateChecker = PucFactory::buildUpdateChecker(
-						$github_repo,
-						$file_path,
-						$name_slug
+						$package['repo'],
+						$package['file_path'],
+						$package['name_slug']
 					);
 
 					//Set the branch that contains the stable release.
-					$UpdateChecker->setBranch( $release_branch );
+					$UpdateChecker->setBranch( $package['release_branch'] );
 
 					if ( ! empty( $package['token'] ) ) {
 						// Set the authentication token for private repo access
