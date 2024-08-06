@@ -28,14 +28,6 @@ if ( ! class_exists( 'WPBoilerplate_Updater_Checker_Github' ) ) {
 	class WPBoilerplate_Updater_Checker_Github {
 
 		/**
-		 * The single instance of the class.
-		 *
-		 * @var WPBoilerplate_Updater_Checker_Github_Loader
-		 * @since 0.0.1
-		 */
-		protected static $_instance = null;
-
-		/**
 		 * Load the licenses for the plugins
 		 *
 		 * @since 0.0.1
@@ -43,28 +35,15 @@ if ( ! class_exists( 'WPBoilerplate_Updater_Checker_Github' ) ) {
 		public $packages = array();
 
 		/**
-		 * Main WPBoilerplate_Updater_Checker_Github Instance.
-		 *
-		 * Ensures only one instance of WooCommerce is loaded or can be loaded.
-		 *
-		 * @since 1.0.0
-		 * @static
-		 * @see WPBoilerplate_Updater_Checker_Github()
-		 * @return WPBoilerplate_Updater_Checker_Github - Main instance.
-		 */
-		public static function instance() {
-			if ( is_null( self::$_instance ) ) {
-				self::$_instance = new self();
-			}
-			return self::$_instance;
-		}
-
-		/**
 		 * Initialize the collections used to maintain the actions and filters.
 		 *
 		 * @since    0.0.1
 		 */
-		public function __construct() {
+		public function __construct( $package = array() ) {
+
+			if ( ! empty( $package ) ) {
+				$this->packages[] = $package;
+			}
 
 			/**
 			 * Action to do update for the plugins
@@ -97,6 +76,7 @@ if ( ! class_exists( 'WPBoilerplate_Updater_Checker_Github' ) ) {
 						$package['name_slug']
 					);
 
+					$package['release_branch'] = empty( $package['release_branch'] ) ? 'main' : $package['release_branch'];
 					//Set the branch that contains the stable release.
 					$UpdateChecker->setBranch( $package['release_branch'] );
 
@@ -108,6 +88,4 @@ if ( ! class_exists( 'WPBoilerplate_Updater_Checker_Github' ) ) {
 			}
 		}
 	}
-
-	new WPBoilerplate_Updater_Checker_Github();
 }
