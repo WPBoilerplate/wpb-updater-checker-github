@@ -70,7 +70,7 @@ if ( ! class_exists( 'WPBoilerplate_Updater_Checker_Github' ) ) {
 
 				foreach ( $this->get_packages() as $package ) {
 
-					$UpdateChecker = PucFactory::buildUpdateChecker(
+					$update_checker = PucFactory::buildUpdateChecker(
 						$package['repo'],
 						$package['file_path'],
 						$package['name_slug']
@@ -78,11 +78,15 @@ if ( ! class_exists( 'WPBoilerplate_Updater_Checker_Github' ) ) {
 
 					$package['release_branch'] = empty( $package['release_branch'] ) ? 'main' : $package['release_branch'];
 					//Set the branch that contains the stable release.
-					$UpdateChecker->setBranch( $package['release_branch'] );
+					$update_checker->setBranch( $package['release_branch'] );
 
 					if ( ! empty( $package['token'] ) ) {
 						// Set the authentication token for private repo access
-						$UpdateChecker->setAuthentication( $package['token'] );
+						$update_checker->setAuthentication( $package['token'] );
+					}
+
+					if ( ! empty( $package['release-assets'] ) ) {
+						$update_checker->getVcsApi()->enableReleaseAssets();
 					}
 				}
 			}
