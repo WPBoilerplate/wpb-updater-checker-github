@@ -9,9 +9,13 @@
         "plugin"
     ],
     "autoload": {
-        "files": ["index.php"]
+        "files": [
+            "index.php"
+        ]
     },
     "require": {
+        "php": ">=7.4",
+        "automattic/jetpack-autoloader": "^2",
         "yahnis-elsts/plugin-update-checker": "dev-master"
     },
     "support": {
