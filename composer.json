@@ -15,7 +15,7 @@
     },
     "require": {
         "php": ">=7.4",
-        "automattic/jetpack-autoloader": "*",
+        "automattic/jetpack-autoloader": "^5.0",
         "yahnis-elsts/plugin-update-checker": "dev-master"
     },
     "support": {

@@ -16,7 +16,7 @@ A Composer library that gives any GitHub-hosted WordPress plugin automatic updat
 | Package | Constraint |
 |---------|-----------|
 | `yahnis-elsts/plugin-update-checker` | `dev-master` |
-| `automattic/jetpack-autoloader` | `*` (always latest) |
+| `automattic/jetpack-autoloader` | `^5.0` |
 
 ---
 
