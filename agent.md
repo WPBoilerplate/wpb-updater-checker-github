@@ -9,7 +9,7 @@ This is a Composer library (`wpboilerplate/wpb-updater-checker-github`) that wir
 | File | Role |
 |------|------|
 | `index.php` | Defines the single class; autoloaded by Composer via `files` autoload |
-| `composer.json` | Package metadata; declares the `yahnis-elsts/plugin-update-checker` dependency |
+| `composer.json` | Package metadata; declares `yahnis-elsts/plugin-update-checker` and `automattic/jetpack-autoloader` (always latest, `"*"`) dependencies |
 | `.gitignore` | Standard WordPress/Composer ignores |
 
 ## Class: `WPBoilerplate_Updater_Checker_Github`
@@ -73,9 +73,12 @@ Only executes when `is_admin()` is true.
 | `admin_init` | action | 1000 | Calls `updater()` to register all packages with Plugin Update Checker |
 | `wpboilerplate_updater_checker_github` | filter | — | Filters the `$packages` array inside `get_packages()` |
 
-## Dependency
+## Dependencies
 
-The library depends on `yahnis-elsts/plugin-update-checker` (tracked as `dev-master`). That library handles all GitHub API communication, version comparison, and WordPress update UI integration.
+| Package | Constraint | Purpose |
+|---------|-----------|---------|
+| `yahnis-elsts/plugin-update-checker` | `dev-master` | GitHub API communication, version comparison, WordPress update UI integration |
+| `automattic/jetpack-autoloader` | `*` (always latest) | Composer autoloader for Jetpack-style multi-version class loading |
 
 ## How Update Detection Works
 

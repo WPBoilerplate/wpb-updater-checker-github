@@ -11,6 +11,13 @@ A Composer library that gives any GitHub-hosted WordPress plugin automatic updat
 - Composer
 - A GitHub repository for the plugin you want to auto-update
 
+**Internal Composer dependencies** (pulled in automatically):
+
+| Package | Constraint |
+|---------|-----------|
+| `yahnis-elsts/plugin-update-checker` | `dev-master` |
+| `automattic/jetpack-autoloader` | `*` (always latest) |
+
 ---
 
 ## Installation
